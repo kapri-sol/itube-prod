@@ -27,10 +27,12 @@ export default {
           day.substring(8, 10);
         const dirPath = path.join(uploadPath, mimetype, dayPath);
         await fs.mkdirSync(dirPath, { recursive: true });
+        console.log(dirPath);
         let readStream = await createReadStream();
         const fileName = File.id + getExtOfFile(filename);
         const filePath = dirPath + "/" + fileName;
         let writeStream = await createWriteStream(filePath);
+
         if (mimetype.substring(0, 5) === "video") {
           await readStream
             .pipe(writeStream)
