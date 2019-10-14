@@ -16,7 +16,7 @@ export default {
         return value;
       });
       const File = await prisma.createFile({ filename, mimetype, encoding });
-      console.log(File);
+
       try {
         const day = File.createdAt;
         const dayPath =
@@ -25,7 +25,7 @@ export default {
           day.substring(5, 7) +
           "/" +
           day.substring(8, 10);
-        const dirPath = path.join(uploadPath, mimetype, dayPath);
+        const dirPath = await path.join(uploadPath, mimetype, dayPath);
         const result = await fs.mkdirSync(dirPath, { recursive: true });
         console.log(result);
         let readStream = await createReadStream();
