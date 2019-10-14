@@ -24,7 +24,7 @@ class App {
   }
   private middlewares = (): void => {
     this.app.express.use((req, res, next) => {
-      res.setTimeout(120000);
+      res.setTimeout(10000);
     });
     this.app.express.use(cors());
     this.app.express.use(logger("dev"));
