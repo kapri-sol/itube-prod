@@ -6,7 +6,6 @@ import helmet from "helmet";
 import logger from "morgan";
 import schema from "./schema";
 import decodeJWT from "./utils/decodeJWT";
-import path from "path";
 import "./env";
 
 class App {
@@ -23,10 +22,6 @@ class App {
     this.middlewares();
   }
   private middlewares = (): void => {
-    this.app.use(express.static("public"));
-    this.app.get("*", (req, res) => {
-      res.sendFile(path.resolve(__dirname, "public", "index.html"));
-    });
     this.app.express.use(cors());
     this.app.express.use(logger("dev"));
     this.app.express.use(helmet());
