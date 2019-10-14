@@ -26,7 +26,7 @@
     "typescript": "^3.6.2"
   },
   "scripts": {
-    "heroku-postbuild": "yarn generate && mkdir src/types && yarn types & yarn build",
+    "heroku-postbuild": "mkdir src/types && yarn types",
     "deploy": "prisma deploy",
     "generate": "prisma generate",
     "prisma": "yarn run deploy && yarn run generate",
