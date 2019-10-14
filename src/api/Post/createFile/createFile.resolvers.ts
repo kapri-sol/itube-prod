@@ -13,10 +13,10 @@ export default {
         encoding,
         createReadStream
       } = await file.then(value => {
-        console.log(value);
         return value;
       });
       const File = await prisma.createFile({ filename, mimetype, encoding });
+      console.log(File);
       try {
         const day = File.createdAt;
         const dayPath =
@@ -27,19 +27,20 @@ export default {
           day.substring(8, 10);
         const dirPath = path.join(uploadPath, mimetype, dayPath);
         await fs.mkdirSync(dirPath, { recursive: true });
-        let readStream = createReadStream();
+        let readStream = await createReadStream();
         const fileName = File.id + getExtOfFile(filename);
         const filePath = dirPath + "/" + fileName;
-        let writeStream = createWriteStream(filePath);
+        let writeStream = await createWriteStream(filePath);
         if (mimetype.substring(0, 5) === "video") {
-          readStream
+          await readStream
             .pipe(writeStream)
             .on("finish", async () => filePreview(filePath, File.id, dirPath));
         } else {
-          readStream.pipe(writeStream);
+          await readStream.pipe(writeStream);
         }
         return File;
       } catch (err) {
+        console.log(err);
         if (File) await prisma.deleteFile({ id: File.id });
         return null;
       }
