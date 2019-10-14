@@ -1,0 +1,58 @@
+type User {
+  id: ID! @id
+  avatar: File @relation(name: "FileOfUser", link: INLINE, onDelete: CASCADE)
+  username: String! @unique
+  email: String!  @unique
+  password: String!
+  firstName: String @default(value: "")
+  lastName: String!
+  subscribes: [User!] @relation(name: "SubscribeRelation")
+  subscribers: [User!] @relation(name: "SubscribeRelation")
+  posts: [Post!] @relation(name: "PostOfUser", onDelete: CASCADE)
+  likes: [Like!] @relation(name: "LikeOfUser", onDelete: CASCADE)
+  comments: [Comment!] @relation(name: "CommentOfUser", onDelete: CASCADE)
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+type Post {
+  id: ID! @id
+  isImg: Boolean!
+  user: User! @relation(name: "PostOfUser")
+  title: String
+  content: String!
+  file: File! @relation(name: "FileOfPost", link: INLINE, onDelete: CASCADE)
+  views: Int! @default(value: 0)
+  likes: [Like!] @relation(name: "LikeOfPost", onDelete: CASCADE)
+  comments: [Comment!] @relation(name: "CommentOfPost", onDelete: CASCADE)
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+type Like {
+  id: ID! @id
+  user: User! @relation(name: "LikeOfUser", onDelete: CASCADE)
+  post: Post! @relation(name: "LikeOfPost", onDelete: CASCADE)
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+type Comment {
+  id: ID! @id
+  text: String!
+  user: User! @relation(name: "CommentOfUser", onDelete: CASCADE)
+  post: Post! @relation(name: "CommentOfPost", onDelete: CASCADE)
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+type File {
+  id: ID! @id
+  filename: String!
+  mimetype: String!
+  encoding: String!
+  user: User @relation(name: "FileOfUser", onDelete: CASCADE)
+  post: Post @relation(name: "FileOfPost", onDelete: CASCADE)
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}

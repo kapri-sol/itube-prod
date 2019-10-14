@@ -1,0 +1,71 @@
+type User {
+  id: ID!
+  avatar: File
+  url: String!
+  username: String!
+  email: String!
+  password: String!
+  firstName: String
+  lastName: String!
+  fullName: String!
+  isSelf: Boolean!
+  isSubscribe: Boolean!
+  subscribes: [User!]
+  subscribesCount: Int!
+  subscribers: [User!]
+  subscribersCount: Int!
+  posts: [Post!]
+  postsCount: Int!
+  likes: [Like!]
+  comments: [Comment!]
+  createdAt: String!
+  updatedAt: String!
+}
+
+type Post {
+  id: ID!
+  isImg: Boolean!
+  user: User!
+  title: String!
+  content: String!
+  file: File
+  views: Int!
+  likes: [Like!]
+  isLiked: Boolean!
+  likeCount: Int!
+  comments: [Comment!]
+  commentCount: Int!
+  createdAt: String!
+  updatedAt: String!
+}
+
+type Like {
+  id: ID!
+  user: User!
+  post: Post!
+  createdAt: String!
+  updatedAt: String!
+}
+
+type Comment {
+  id: ID!
+  text: String!
+  user: User!
+  post: Post!
+  createdAt: String!
+  updatedAt: String!
+}
+
+type File {
+  id: ID!
+  filename: String!
+  mimetype: String!
+  encoding: String!
+  url: String!
+  user: User
+  post: Post
+  createdAt: String!
+  updatedAt: String!
+}
+
+scalar Upload
