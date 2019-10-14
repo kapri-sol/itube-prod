@@ -13,6 +13,7 @@ export default {
         encoding,
         createReadStream
       } = await file.then(value => {
+        console.log(value);
         return value;
       });
       const File = await prisma.createFile({ filename, mimetype, encoding });
