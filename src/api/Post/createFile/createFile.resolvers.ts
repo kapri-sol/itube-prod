@@ -26,8 +26,8 @@ export default {
           "/" +
           day.substring(8, 10);
         const dirPath = path.join(uploadPath, mimetype, dayPath);
-        await fs.mkdirSync(dirPath, { recursive: true });
-        console.log(dirPath);
+        const result = await fs.mkdirSync(dirPath, { recursive: true });
+        console.log(result);
         let readStream = await createReadStream();
         const fileName = File.id + getExtOfFile(filename);
         const filePath = dirPath + "/" + fileName;
