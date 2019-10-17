@@ -37,8 +37,7 @@ class App {
         // graphqlUploadExpress({ maxFileSize: 10000000, maxFiles: 10 })
         apolloUploadExpress()
       )
-      .use(graphqlHTTP);
-    // this.app.express.use(express.static("../upload"));
+      .use(graphqlHTTP({ schema }));
   };
 
   private jwt = async (
