@@ -38,4 +38,5 @@ export const uploadController = (req, res) => {
   //   res.json(filename);
   //   const { file } = req;
   //   console.log(file);
+  res.end();
 };
