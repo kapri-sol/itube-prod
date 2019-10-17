@@ -41,6 +41,7 @@
     "client": "yarn run start --prefix client"
   },
   "dependencies": {
+    "apollo-upload-server": "^7.1.0",
     "aws-sdk": "^2.549.0",
     "bcrypt": "^3.0.6",
     "copy": "^0.3.2",
