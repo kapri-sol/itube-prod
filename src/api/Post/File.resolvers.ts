@@ -19,7 +19,7 @@ export default {
             // "/" +
             // createdAt.substring(8, 10) +
             // "/" +
-            process.env.STORAGE_URL + id + getExtOfFile(filename);
+            process.env.STORAGE_URL + "/" + id + getExtOfFile(filename);
           console.log(url);
           return url;
         } else {
