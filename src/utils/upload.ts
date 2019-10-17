@@ -20,27 +20,22 @@ const upload = multer({
       //   console.log(file);
       cb(null, { fieldName: file.originalname });
     },
-    key: function(req, file, cb) {
-      console.log(file);
-      //   const {
-      //     headers: { fileid }
-      //   } = req;
-      //   cb(null, fileid + getExtOfFile(file.originalname));
-      cb(null, Date().toString() + getExtOfFile(file.originalname));
+    key: async function(req, file, cb) {
+      //   console.log(file);
+      const {
+        headers: { fileid }
+      } = await req;
+      console.log(fileid);
+      cb(null, fileid + getExtOfFile(file.originalname));
+      //   cb(null, Date().toString() + getExtOfFile(file.originalname));
     }
   })
 });
 
 export const uploadMiddleware = upload.single("file");
 
-export const uploadController = (req, res, err) => {
-  //   const {
-  //     file: { filename }
-  //   } = req;
+export const uploadController = (req, res, next) => {
   console.log(process.env.AWS_BUCKET);
-  console.log(err);
   console.log("req");
   res.json("good");
-  //   const { file } = req;
-  //   console.log(file);
 };

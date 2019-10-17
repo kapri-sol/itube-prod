@@ -14,6 +14,7 @@ export default {
       });
       try {
         const File = await prisma.createFile({ filename, mimetype, encoding });
+        console.log(File);
         return File;
       } catch (err) {
         console.log(err);
