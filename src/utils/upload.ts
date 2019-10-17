@@ -17,7 +17,7 @@ const upload = multer({
     acl: "public-read",
     bucket: process.env.AWS_BUCKET,
     contentLength: 500000000,
-    cacheControl: "max-age=31536000",
+    // cacheControl: "max-age=31536000",
     metadata: function(req, file, cb) {
       console.log(file);
       cb(null, { fieldName: file.originalname });
