@@ -1,5 +1,5 @@
 import cors from "cors";
-import express from "express";
+// import express from "express";
 import { NextFunction, Response } from "express";
 import { GraphQLServer } from "graphql-yoga";
 import helmet from "helmet";
@@ -23,12 +23,15 @@ class App {
     this.middlewares();
   }
   private middlewares = (): void => {
+    this.app.express.use((req, res, next) => {
+      console.log(res);
+    });
     this.app.express.use(cors());
     this.app.express.use(logger("dev"));
     this.app.express.use(helmet());
     this.app.express.use(this.jwt);
     // this.app.express.use(graphqlUploadExpress());
-    this.app.express.use(express.static("../upload"));
+    // this.app.express.use(express.static("../upload"));
   };
 
   private jwt = async (
