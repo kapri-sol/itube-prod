@@ -9,7 +9,7 @@ import decodeJWT from "./utils/decodeJWT";
 import "./env";
 import { graphqlUploadExpress } from "graphql-upload";
 // import { apolloUploadExpress } from "apollo-upload-server";
-import graphqlHTTP from "express-graphql";
+// import graphqlHTTP from "express-graphql";
 
 class App {
   public app: GraphQLServer;
@@ -32,13 +32,10 @@ class App {
     this.app.express.use(logger("dev"));
     this.app.express.use(helmet());
     this.app.express.use(this.jwt);
-    this.app.express
-      .use(
-        graphqlUploadExpress({ maxFileSize: 10000000, maxFiles: 10 }),
-        graphqlHTTP({ schema })
-        // apolloUploadExpress()
-      )
-      .listen(process.env.PORT);
+    this.app.express.use(
+      graphqlUploadExpress({ maxFileSize: 10000000, maxFiles: 10 })
+      // apolloUploadExpress()
+    );
   };
 
   private jwt = async (
