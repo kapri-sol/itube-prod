@@ -31,8 +31,8 @@ type Post {
 
 type Like {
   id: ID! @id
-  user: User! @relation(name: "LikeOfUser", onDelete: CASCADE)
-  post: Post! @relation(name: "LikeOfPost", onDelete: CASCADE)
+  user: User! @relation(name: "LikeOfUser")
+  post: Post! @relation(name: "LikeOfPost")
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
 }
@@ -40,8 +40,8 @@ type Like {
 type Comment {
   id: ID! @id
   text: String!
-  user: User! @relation(name: "CommentOfUser", onDelete: CASCADE)
-  post: Post! @relation(name: "CommentOfPost", onDelete: CASCADE)
+  user: User! @relation(name: "CommentOfUser")
+  post: Post! @relation(name: "CommentOfPost")
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
 }
@@ -51,8 +51,8 @@ type File {
   filename: String!
   mimetype: String!
   encoding: String!
-  user: User @relation(name: "FileOfUser", onDelete: CASCADE)
-  post: Post @relation(name: "FileOfPost", onDelete: CASCADE)
+  user: User @relation(name: "FileOfUser")
+  post: Post @relation(name: "FileOfPost")
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
 }
