@@ -2,7 +2,6 @@ import aws from "aws-sdk";
 import multer from "multer";
 import "../env";
 import multerS3 from "multer-s3";
-// import {prisma} from "../../generated/prisma-client";
 import { getExtOfFile } from "./fileManage";
 
 const s3 = new aws.S3({
@@ -16,8 +15,7 @@ const upload = multer({
     s3,
     acl: "public-read",
     bucket: process.env.AWS_BUCKET,
-    contentLength: 500000000,
-    // cacheControl: "max-age=31536000",
+    // contentLength: 500000000,
     metadata: function(req, file, cb) {
       console.log(file);
       cb(null, { fieldName: file.originalname });
