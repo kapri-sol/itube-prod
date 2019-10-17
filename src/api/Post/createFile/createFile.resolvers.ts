@@ -21,19 +21,25 @@ export default {
       const File = await prisma.createFile({ filename, mimetype, encoding });
 
       try {
-        await s3.putObject(
-          {
-            Bucket: "itube-storage",
-            Key: File.id + getExtOfFile(filename),
-            ACL: "public-read",
-            Body: createReadStream(),
-            ContentType: mimetype
-          },
-          (err, data) => {
-            console.log(err);
-            console.log(data);
-          }
+        new Promise((resolve, reject) =>
+          s3
+            .putObject(
+              {
+                Bucket: "itube-storage",
+                Key: File.id + getExtOfFile(filename),
+                ACL: "public-read",
+                Body: createReadStream(),
+                ContentType: mimetype
+              },
+              (err, data) => {
+                console.log(err);
+                console.log(data);
+              }
+            )
+            .on("finish", () => resolve())
+            .on("error", reject)
         );
+
         //   const day = File.createdAt;
         //   const dayPath =
         //     day.substring(0, 4) +
