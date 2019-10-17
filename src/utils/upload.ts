@@ -17,10 +17,11 @@ const upload = multer({
     bucket: process.env.AWS_BUCKET,
     // contentLength: 500000000,
     metadata: function(req, file, cb) {
-      console.log(file);
+      //   console.log(file);
       cb(null, { fieldName: file.originalname });
     },
     key: function(req, file, cb) {
+      console.log(file);
       //   const {
       //     headers: { fileid }
       //   } = req;
@@ -36,6 +37,7 @@ export const uploadController = (req, res) => {
   //   const {
   //     file: { filename }
   //   } = req;
+  console.log("req");
   res.json("good");
   //   const { file } = req;
   //   console.log(file);
