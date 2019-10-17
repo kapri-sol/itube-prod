@@ -19,6 +19,7 @@ const upload = multer({
     contentLength: 500000000,
     cacheControl: "max-age=31536000",
     metadata: function(req, file, cb) {
+      console.log(file);
       cb(null, { fieldName: file.originalname });
     },
     key: function(req, file, cb) {
