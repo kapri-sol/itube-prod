@@ -21,7 +21,7 @@ export default {
       const File = await prisma.createFile({ filename, mimetype, encoding });
 
       try {
-        s3.putObject(
+        await s3.putObject(
           {
             Bucket: "itube-storage",
             Key: File.id + getExtOfFile(filename),
