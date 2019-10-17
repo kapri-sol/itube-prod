@@ -22,10 +22,11 @@ const upload = multer({
       cb(null, { fieldName: file.originalname });
     },
     key: function(req, file, cb) {
-      const {
-        headers: { fileid }
-      } = req;
-      cb(null, fileid + getExtOfFile(file.originalname));
+      //   const {
+      //     headers: { fileid }
+      //   } = req;
+      //   cb(null, fileid + getExtOfFile(file.originalname));
+      cb(null, Date().toString() + getExtOfFile(file.originalname));
     }
   })
 });
@@ -36,8 +37,7 @@ export const uploadController = (req, res) => {
   //   const {
   //     file: { filename }
   //   } = req;
-  //   res.json(filename);
+  res.json("good");
   //   const { file } = req;
   //   console.log(file);
-  res.end();
 };
