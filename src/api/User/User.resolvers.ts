@@ -8,20 +8,20 @@ export default {
       const avatar = await prisma.user({ id }).avatar();
       if (avatar) {
         const url =
-          `${process.env.URL}:${process.env.PORT}/` +
-          avatar.mimetype +
-          "/" +
-          avatar.createdAt.substring(0, 4) +
-          "/" +
-          avatar.createdAt.substring(5, 7) +
-          "/" +
-          avatar.createdAt.substring(8, 10) +
-          "/" +
+          `${process.env.STORAGE_URL}/` +
+          // avatar.mimetype +
+          // "/" +
+          // avatar.createdAt.substring(0, 4) +
+          // "/" +
+          // avatar.createdAt.substring(5, 7) +
+          // "/" +
+          // avatar.createdAt.substring(8, 10) +
+          // "/" +
           avatar.id +
           getExtOfFile(avatar.filename);
         return url;
       } else {
-        return `${process.env.URL}:${process.env.PORT}/default/avatar.svg`;
+        return `${process.env.STORAGE_URL}/avatar.png`;
       }
     },
     posts: ({ id }) => prisma.user({ id }).posts(),
