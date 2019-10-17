@@ -33,10 +33,12 @@ const upload = multer({
 
 export const uploadMiddleware = upload.single("file");
 
-export const uploadController = (req, res) => {
+export const uploadController = (req, res, err) => {
   //   const {
   //     file: { filename }
   //   } = req;
+  console.log(process.env.AWS_BUCKET);
+  console.log(err);
   console.log("req");
   res.json("good");
   //   const { file } = req;
