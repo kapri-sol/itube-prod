@@ -8,12 +8,12 @@ import { prisma } from "../../../../generated/prisma-client";
 
 export default {
   Mutation: {
-    createFile: async (_, { file }) => {
-      const { filename, mimetype, encoding } = await file.then(value => {
-        return value;
-      });
+    createFile: async (_, { filename, mimetype }) => {
+      // const { filename, mimetype, encoding } = await file.then(value => {
+      //   return value;
+      // });
       try {
-        const File = await prisma.createFile({ filename, mimetype, encoding });
+        const File = await prisma.createFile({ filename, mimetype });
         console.log(File);
         return File;
       } catch (err) {

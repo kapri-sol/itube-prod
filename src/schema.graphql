@@ -1,13 +1,13 @@
 type Mutation {
   addComment(postId: String!, text: String!): Comment!
   toggleLike(postId: String!): Boolean!
-  createFile(file: Upload!): File!
+  createFile(filename: String!, mimetype: String!): File!
   createPost(fileId: String!, title: String, content: String!): Post!
   deletePost(id: String!): Boolean!
   editPost(id: String!, title: String!, content: String!): Post!
   changePassword(password: String!, newPassword: String!): Boolean!
   createAccount(email: String!, username: String!, firstName: String, lastName: String!, password: String!): User!
-  editUser(username: String, email: String, firstName: String, lastName: String, avatar: Upload): User!
+  editUser(username: String, email: String, firstName: String, lastName: String, filename: String, mimetype: String): User!
   emailSignIn(email: String!, password: String!): emailSignInResponse!
   subscribe(id: String!): Boolean!
   unsubscribe(id: String!): Boolean!
@@ -75,7 +75,6 @@ type File {
   id: ID!
   filename: String!
   mimetype: String!
-  encoding: String!
   url: String!
   user: User
   post: Post

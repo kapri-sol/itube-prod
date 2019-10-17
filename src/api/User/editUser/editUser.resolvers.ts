@@ -4,14 +4,14 @@ import fileCreate from "../../Post/createFile/createFile.resolvers";
 export default {
   Mutation: {
     editUser: async (_, args, { req }) => {
-      const { username, email, firstName, lastName, avatar } = args;
+      const { username, email, firstName, lastName, filename, mimetype } = args;
       const { user } = req;
 
-      if (avatar) {
+      if (filename && mimetype) {
         const {
           Mutation: { createFile }
         } = fileCreate;
-        const File = await createFile(_, { file: avatar });
+        const File = await createFile(_, { filename, mimetype });
 
         if (File) {
           const { id } = File;

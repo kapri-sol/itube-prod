@@ -50,7 +50,6 @@ type File {
   id: ID! @id
   filename: String!
   mimetype: String!
-  encoding: String!
   user: User @relation(name: "FileOfUser")
   post: Post @relation(name: "FileOfPost")
   createdAt: DateTime! @createdAt
