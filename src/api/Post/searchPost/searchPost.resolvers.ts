@@ -7,8 +7,8 @@ export default {
       return prisma.posts({
         where: {
           OR: [
-            { title_starts_with: term },
-            { content_starts_with: term },
+            { title_contains: term },
+            { content_contains: term },
             {
               user: {
                 username_contains: term

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "../../Styles/typed-components";
-import Input from "Components/Input";
-import Button from "Components/Button";
+import Input from "../../Components/Input";
+import Button from "../../Components/Button";
 import Loader from "../../Components/Loader";
 
 const Wrapper = styled.form`

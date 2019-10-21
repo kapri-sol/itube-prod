@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useMutation } from "@apollo/react-hooks";
 import { useDropzone } from "react-dropzone";
 import { toast } from "react-toastify";
-import useInput from "Hooks/useInput";
+import useInput from "../../Hooks/useInput";
 import UploadPresenter from "./UploadPresenter";
 import { CREATE_FILE, CREATE_POST } from "./UploadQueries";
 import axios from "axios";
@@ -27,8 +27,8 @@ export default () => {
     formData.append("file", file);
     try {
       const req = await axios.post(
-        // "http://localhost:4000/api/upload",
-        "https://peaceful-earth-90998.herokuapp.com/api/upload",
+        "http://localhost:4000/api/upload",
+        // "https://peaceful-earth-90998.herokuapp.com/api/upload",
         formData,
         {
           headers: {

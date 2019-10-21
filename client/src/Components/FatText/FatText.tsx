@@ -1,10 +1,11 @@
 import React from "react";
-import styled from "Styles/typed-components";
+import styled from "../../Styles/typed-components";
 
 interface IProps {
   text?: string;
   className?: any;
 }
+
 const Text = styled.span`
   font-weight: 600;
 `;
