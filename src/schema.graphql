@@ -1,6 +1,7 @@
 type Mutation {
   addComment(postId: String!, text: String!): Comment!
   toggleLike(postId: String!): Boolean!
+  addView(postId: String!): Boolean
   createFile(filename: String!, mimetype: String!): File!
   createPost(fileId: String!, title: String, content: String!): Post!
   deletePost(id: String!): Boolean!
