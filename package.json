@@ -38,7 +38,7 @@
     "predev": "yarn run types",
     "dev": "cd src && nodemon --exec ts-node index.ts -e ts, graphql",
     "start": "node dist/src/index.js",
-    "server": "cd src &&  ts-node index.ts",
+    "server": "nodemon  dist/src/index.js",
     "client": "npm start --prefix client"
   },
   "dependencies": {
