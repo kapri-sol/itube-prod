@@ -1,4 +1,5 @@
 import cors from "cors";
+import express from "express";
 import { NextFunction, Response } from "express";
 import { GraphQLServer } from "graphql-yoga";
 import helmet from "helmet";
@@ -27,6 +28,7 @@ class App {
     this.app.express.use(helmet());
     this.app.express.use(this.jwt);
     this.app.express.post("/api/upload", uploadMiddleware, uploadController);
+    this.app.express.get("/", express.static(__dirname + "/../public"));
   };
 
   private jwt = async (
