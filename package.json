@@ -25,7 +25,7 @@
     "typescript": "^3.6.2"
   },
   "scripts": {
-    "heroku-postbuild": "mkdir src/types && yarn types &&  yarn generate && yarn build && npm i -D extract-text-webpack-plugin@next --prefix client && npm run build --prefix client",
+    "heroku-postbuild": "mkdir src/types && yarn types &&  yarn generate && yarn build && cd client && npm install && npm run build",
     "deploy": "prisma deploy",
     "generate": "prisma generate",
     "prisma": "yarn run deploy && yarn run generate",
