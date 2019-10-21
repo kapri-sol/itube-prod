@@ -17,23 +17,19 @@ const upload = multer({
     bucket: process.env.AWS_BUCKET,
     // contentLength: 500000000,
     metadata: function(req, file, cb) {
-      //   console.log(file);
       cb(null, { fieldName: file.originalname });
     },
     key: async function(req, file, cb) {
-      //   console.log(file);
       const {
         headers: { fileid }
       } = await req;
-      console.log(fileid);
       cb(null, fileid + getExtOfFile(file.originalname));
-      //   cb(null, Date().toString() + getExtOfFile(file.originalname));
     }
   })
 });
 
 export const uploadMiddleware = upload.single("file");
 
-export const uploadController = (req, res, next) => {
+export const uploadController = async (req, res, next) => {
   res.json("good");
 };

@@ -6,6 +6,11 @@ export const getExtOfFile = filename => {
   return filename.substring(lastDot, fileLen);
 };
 
+export const getFileLocation = location => {
+  const lastDot = location.lastIndexOf(".");
+  return location.substring(0, lastDot);
+};
+
 export const filePreview = async (fileInput, fileId, dirPath) => {
   await ffmpeg(fileInput)
     .duration(5)
