@@ -47,7 +47,8 @@
     "@types/react-toastify": "^4.0.2",
     "@types/styled-components": "^4.1.18",
     "gh-pages": "^2.1.1",
-    "typescript": "^3.6.2"
+    "typescript": "^3.6.2",
+    "webpack": "^4.0.0"
   },
   "homepage": "http://github.com/kapri-sol/itube-client",
   "proxy": "http://localhost:4000"
