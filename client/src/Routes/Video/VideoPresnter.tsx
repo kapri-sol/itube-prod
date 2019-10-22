@@ -265,7 +265,7 @@ export default ({
       <Wrapper>
         <link
           rel="stylesheet"
-          href="https://video-react.github.io/assets/video-react.css"
+          href="http://video-react.github.io/assets/video-react.css"
         />
         <Player src={file.url} type={file.mimetype}>
           <ControlBar autoHide={false} className={"my-class"} />
