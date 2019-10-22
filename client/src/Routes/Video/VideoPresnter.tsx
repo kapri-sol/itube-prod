@@ -9,6 +9,7 @@ import CommentBox from "../../Components/CommentBox";
 import SubscribeButton from "../../Components/SubscribeButton";
 import Button from "../../Components/Button";
 import useInput from "../../Hooks/useInput";
+import "video-react/dist/video-react.css";
 
 const Wrapper = styled.div`
   margin-bottom: 20px;
@@ -263,10 +264,7 @@ export default ({
 
     return (
       <Wrapper>
-        <link
-          rel="stylesheet"
-          href="https://video-react.github.io/assets/video-react.css"
-        />
+        <link rel="stylesheet" href="/css/video-react.css" />
         <Player src={file.url} type={file.mimetype}>
           <ControlBar autoHide={false} className={"my-class"} />
         </Player>
