@@ -26,8 +26,8 @@ const authMiddleware = new ApolloLink((operation: Operation, forward: any) => {
   return forward(operation);
 });
 
-// export const host = "https://peaceful-earth-90998.herokuapp.com";
-export const host = "http://localhost:4000";
+export const host = "https://peaceful-earth-90998.herokuapp.com";
+// export const host = "http://localhost:4000";
 const uri = host + "/graphql";
 
 const uploadLink = createUploadLink({ uri });

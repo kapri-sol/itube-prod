@@ -27,8 +27,8 @@ export default () => {
     formData.append("file", file);
     try {
       const req = await axios.post(
-        "http://localhost:4000/api/upload",
-        // "https://peaceful-earth-90998.herokuapp.com/api/upload",
+        // "http://localhost:4000/api/upload",
+        "https://peaceful-earth-90998.herokuapp.com/api/upload",
         formData,
         {
           headers: {
