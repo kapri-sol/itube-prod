@@ -51,6 +51,6 @@
     "typescript": "^3.6.2",
     "webpack": "^4.0.0"
   },
-  "homepage": "http://github.com/kapri-sol/itube-client",
+  "homepage": ".",
   "proxy": "http://localhost:4000"
 }

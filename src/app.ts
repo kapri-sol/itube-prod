@@ -8,6 +8,7 @@ import schema from "./schema";
 import decodeJWT from "./utils/decodeJWT";
 import { uploadMiddleware, uploadController } from "./utils/upload";
 import "./env";
+import path from "path";
 
 class App {
   public app: GraphQLServer;
@@ -28,7 +29,15 @@ class App {
     this.app.express.use(helmet());
     this.app.express.use(this.jwt);
     this.app.express.post("/api/upload", uploadMiddleware, uploadController);
-    this.app.express.use("/", express.static(__dirname + "/../client/build/"));
+
+    this.app.express.use(
+      "/",
+      express.static(path.join(__dirname, "/../client/build"))
+    );
+
+    this.app.express.get("*", (req, res) =>
+      res.sendFile(path.join(__dirname, "/../client/build/index.html"))
+    );
   };
 
   private jwt = async (
