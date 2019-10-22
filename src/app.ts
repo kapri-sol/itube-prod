@@ -32,19 +32,19 @@ class App {
 
     this.app.express.use(
       "/user/:user",
-      express.static(path.join(__dirname, "/../client/build"))
+      express.static(path.join(__dirname, "/../../client/build"))
     );
     this.app.express.use(
       "/video/:id",
-      express.static(path.join(__dirname, "/../client/build"))
+      express.static(path.join(__dirname, "/../../client/build"))
     );
     this.app.express.use(
       "/",
-      express.static(path.join(__dirname, "/../client/build"))
+      express.static(path.join(__dirname, "/../../client/build"))
     );
 
     this.app.express.get("*", (req, res, next) =>
-      res.sendFile(path.join(__dirname, "/../client/build/index.html"))
+      res.sendFile(path.join(__dirname, "/../../client/build/index.html"))
     );
   };
 
